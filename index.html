@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrokInstall — your context already has the answer</title>
+    <meta
+      name="description"
+      content="GrokInstall decides whether an agent needs to install anything at all. If it does, it provisions safely, confines the runtime, verifies it, and hands back a 432-byte capability contract."
+    />
+    <meta name="color-scheme" content="light" />
+    <meta property="og:title" content="GrokInstall — your context already has the answer" />
+    <meta
+      property="og:description"
+      content="Decide, provision or refuse. Never install more than the capability."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E7C86'/%3E%3Cpath d='M7 22V10h4l5 7 5-7h4v12h-4v-6l-5 7-5-7v6z' fill='%23F2F5F6'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <a class="wordmark" href="#top">
+        <span class="wordmark__mark" aria-hidden="true">G</span>
+        <span class="wordmark__text">GrokInstall</span>
+      </a>
+      <nav class="masthead__nav" aria-label="Primary">
+        <a href="#decide">Decide</a>
+        <a href="#refuse">Refuse</a>
+        <a href="#install">Install</a>
+        <a
+          class="masthead__cta"
+          href="https://github.com/M4G3LL4N0/grokinstall"
+          rel="noopener"
+          >GitHub</a
+        >
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="rail" aria-hidden="true"><span>SCOPE</span></div>
+        <div class="hero__body">
+          <p class="eyebrow">A single binary, no service, no model</p>
+          <h1 class="hero__title">
+            Your context already has<br />the answer.
+            <em>Install it for the cases<br />that need a runtime.</em>
+          </h1>
+          <p class="hero__lede">
+            GrokInstall answers one question honestly: when an agent is told to
+            use a capability, does it need installing at all? If not, it stops.
+            If so, it provisions, verifies and confines. If the safest route
+            needs more authority than the safe policy allows, it refuses and
+            changes nothing.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#install">Get v0.1.1</a>
+            <a class="button" href="#decide">See how it decides</a>
+          </div>
+        </div>
+
+        <figure class="readout" id="contract">
+          <figcaption class="readout__caption">
+            <span class="readout__file">bat.review</span>
+            <span class="readout__size" data-bytes>432 B</span>
+          </figcaption>
+          <pre class="readout__body"><code id="contract-text"></code></pre>
+        </figure>
+
+        <div class="measure" aria-hidden="true">
+          <div class="measure__row">
+            <span class="measure__label">contract</span>
+            <div class="measure__track">
+              <div class="measure__fill measure__fill--contract"></div>
+            </div>
+            <span class="measure__value">432 B</span>
+          </div>
+          <div class="measure__row">
+            <span class="measure__label">the repository</span>
+            <div class="measure__track">
+              <div class="measure__fill measure__fill--repo"></div>
+            </div>
+            <span class="measure__value">~200 KB</span>
+          </div>
+          <p class="measure__note">
+            What GrokBot is asked to hold, measured against what it would
+            otherwise be asked to hold.
+          </p>
+        </div>
+      </section>
+
+      <section class="band" id="decide">
+        <div class="rail" aria-hidden="true"><span>DECIDE</span></div>
+        <div class="band__body">
+          <h2 class="band__title">Three answers, and only three.</h2>
+          <p class="band__lede">
+            Most "set this up" instructions do not need an installation.
+            GrokInstall is built to notice that, and to be unembarrassed about
+            saying so.
+          </p>
+          <div class="verdicts" id="verdicts"></div>
+        </div>
+      </section>
+
+      <section class="band band--refusal" id="refuse">
+        <div class="rail" aria-hidden="true"><span>REFUSE</span></div>
+        <div class="band__body">
+          <div class="refusal">
+            <div class="refusal__text">
+              <h2 class="band__title">A refusal is a feature.</h2>
+              <p class="band__lede">
+                Asked to make <code>click</code> callable, the only safe route
+                was a Python install whose build backend may execute packaging
+                code. GrokInstall refused, named the blocker, and registered
+                nothing. This is the real output:
+              </p>
+              <pre class="refusal__block"><code id="refusal-text"></code></pre>
+              <p class="refusal__after">
+                To proceed deliberately, you name the risk class. There is no
+                generic <code>--yes</code>.
+              </p>
+            </div>
+            <dl class="consequences">
+              <div><dt>registered</dt><dd class="is-quiet">nothing</dd></div>
+              <div><dt>system state</dt><dd class="is-quiet">unchanged</dd></div>
+              <div><dt>staging residue</dt><dd class="is-quiet">none</dd></div>
+              <div><dt>to override</dt><dd>--allow-install-scripts</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="install">
+        <div class="rail" aria-hidden="true"><span>INSTALL</span></div>
+        <div class="band__body">
+          <h2 class="band__title">Verify before you run it.</h2>
+          <p class="band__lede">
+            Download the binary and the checksum file from the release. Check
+            the checksum first. There is no install script to trust.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <h3>Download</h3>
+              <pre><code>gh release download v0.1.1 \
+  -p 'grokinstall_0.1.1_darwin_arm64' -p SHA256SUMS</code></pre>
+            </div>
+            <div class="step">
+              <h3>Verify</h3>
+              <pre><code>shasum -a 256 -c SHA256SUMS</code></pre>
+              <p class="step__note">
+                Checksums are cross-checked with an independent implementation
+                before publishing.
+              </p>
+            </div>
+            <div class="step">
+              <h3>Use</h3>
+              <pre><code>./grokinstall_0.1.1_darwin_arm64 inspect \
+  https://github.com/sharkdp/bat</code></pre>
+            </div>
+          </div>
+
+          <div class="platforms">
+            <h3 class="platforms__title">Published checksums</h3>
+            <ul class="platforms__list" id="platforms"></ul>
+          </div>
+
+          <p class="install__alt">
+            Prefer a package manager? <code>go install github.com/M4G3LL4N0/grokinstall/cmd/grokinstall@latest</code>
+          </p>
+        </div>
+      </section>
+
+      <section class="band band--proof">
+        <div class="rail" aria-hidden="true"><span>PROOF</span></div>
+        <div class="band__body">
+          <h2 class="band__title">What was actually run.</h2>
+          <dl class="proof" id="proof"></dl>
+          <p class="proof__note">
+            Figures come from the published binary on darwin/arm64, not from a
+            development build. Development builds identify themselves as such.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__grid">
+        <p class="footer__claim">Install the capability, not the complexity.</p>
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="https://github.com/M4G3LL4N0/grokinstall" rel="noopener">Repository</a>
+          <a href="https://github.com/M4G3LL4N0/grokinstall/releases" rel="noopener">Releases</a>
+          <a href="https://github.com/M4G3LL4N0/grokinstall/blob/main/SECURITY.md" rel="noopener">Security</a>
+          <a href="https://github.com/M4G3LL4N0/grokinstall/blob/main/ROADMAP.md" rel="noopener">Roadmap</a>
+        </nav>
+      </div>
+      <p class="footer__legal">
+        Go 1.24, one dependency. State stays in
+        <code>~/.grokinstall</code>. Nothing is uploaded anywhere.
+      </p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
